@@ -1,1 +1,954 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Anonymous project page for KAVA." />
+  <title>KAVA | Anonymous Project Page</title>
+
+  <style>
+    :root {
+      /* Palette sampled to match the light-blue figures in the paper */
+      --blue: #6f95c3;
+      --blue-mid: #a9bedc;
+      --blue-light: #eaf1f8;
+      --blue-pale: #f6f9fd;
+
+      --ink: #1f252d;
+      --body: #303740;
+      --muted: #6d7682;
+      --line: #e4e9ef;
+      --line-blue: #d6e1ee;
+      --white: #ffffff;
+
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--body);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    header {
+      background: #fff;
+      padding: 72px 0 42px;
+      text-align: center;
+    }
+
+    .paper-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+    }
+
+    .title-rule {
+      width: 72px;
+      height: 3px;
+      margin: 22px auto 20px;
+      background: var(--blue-mid);
+    }
+
+    .subtitle {
+      max-width: 900px;
+      margin: 0 auto;
+      color: #3f4751;
+      font-size: clamp(1.08rem, 2.1vw, 1.34rem);
+      line-height: 1.45;
+    }
+
+    .anonymous {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 92px;
+      padding: 8px 17px;
+      border: 1px solid var(--blue-mid);
+      border-radius: 4px;
+      background: #fff;
+      color: #496b95;
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: 0.18s ease;
+    }
+
+    .button:hover {
+      background: var(--blue-pale);
+      border-color: var(--blue);
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .button.primary:hover {
+      background: #6288b8;
+    }
+
+    .button.disabled {
+      color: #87909b;
+      border-color: #d7dde4;
+      pointer-events: none;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.97);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 12px 0;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-inner a {
+      color: #59626d;
+      text-decoration: none;
+      font-size: 0.91rem;
+    }
+
+    .nav-inner a:hover {
+      color: var(--blue);
+    }
+
+    /* =========================================================
+       SECTIONS
+    ========================================================= */
+
+    section {
+      padding: 72px 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      margin-bottom: 34px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      margin-bottom: 6px;
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(1.9rem, 4vw, 2.55rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+
+    .section-rule {
+      width: 46px;
+      height: 2px;
+      margin: 16px auto 0;
+      background: var(--blue-mid);
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    h4 {
+      margin: 0 0 7px;
+      color: #355678;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 11px 0;
+      font-size: 1.03rem;
+    }
+
+    .lead {
+      max-width: 860px;
+      margin: 0 auto 30px;
+      color: #4d5661;
+      text-align: center;
+      font-size: 1.06rem;
+    }
+
+    .placeholder {
+      color: #7c8692;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       FIGURES
+    ========================================================= */
+
+    .figure {
+      margin: 30px auto 0;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .figure-placeholder {
+      min-height: 315px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      border: 1px solid var(--line-blue);
+      background: #fff;
+      color: #7087a4;
+      text-align: center;
+    }
+
+    .figure-placeholder::before {
+      content: "";
+      position: absolute;
+    }
+
+    .caption {
+      max-width: 900px;
+      margin: 10px auto 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.89rem;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       KALMAN / METHOD STEPS
+    ========================================================= */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 34px;
+      border-top: 1px solid var(--line-blue);
+      border-bottom: 1px solid var(--line-blue);
+    }
+
+    .step {
+      position: relative;
+      padding: 26px 26px 24px;
+      background: #fff;
+    }
+
+    .step + .step {
+      border-left: 1px solid var(--line-blue);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 27px;
+      height: 27px;
+      margin-bottom: 13px;
+      border: 1px solid var(--blue-mid);
+      border-radius: 50%;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .step p {
+      margin-bottom: 0;
+      color: #5a6470;
+      font-size: 0.96rem;
+    }
+
+    /* =========================================================
+       RESULT BLOCKS
+    ========================================================= */
+
+    .result-block {
+      margin-top: 54px;
+    }
+
+    .result-block:first-of-type {
+      margin-top: 34px;
+    }
+
+    .result-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--blue-light);
+    }
+
+    .tag {
+      color: var(--blue);
+      font-size: 0.84rem;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       VIDEOS
+    ========================================================= */
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .video-card {
+      overflow: hidden;
+      border: 1px solid var(--line-blue);
+      background: #fff;
+    }
+
+    .video-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .video-placeholder {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      padding: 22px;
+      background: #fbfdff;
+      color: #7188a4;
+      text-align: center;
+      border-bottom: 1px solid var(--line-blue);
+    }
+
+    .video-label {
+      padding: 9px 12px 10px;
+      color: #46586d;
+      text-align: center;
+      font-size: 0.91rem;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       TABLES
+    ========================================================= */
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 23px;
+      border-top: 1px solid var(--blue-mid);
+      border-bottom: 1px solid var(--blue-mid);
+    }
+
+    table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    th {
+      background: var(--blue-pale);
+      color: #334d69;
+      font-weight: 700;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .ours {
+      background: #fbfdff;
+      font-weight: 700;
+    }
+
+    .ours td:first-child {
+      color: #3f6e9f;
+    }
+
+    /* =========================================================
+       FINDINGS
+    ========================================================= */
+
+    .findings {
+      margin-top: 30px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--blue);
+      background: var(--blue-pale);
+    }
+
+    .findings h4 {
+      color: #3f648c;
+    }
+
+    .findings ul {
+      margin: 9px 0 0;
+      padding-left: 20px;
+    }
+
+    .findings li {
+      margin: 6px 0;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 30px 20px 46px;
+      border-top: 1px solid var(--line);
+      color: #8a929c;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 820px) {
+      header {
+        padding-top: 52px;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step + .step {
+        border-left: none;
+        border-top: 1px solid var(--line-blue);
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+  <header>
+    <div class="container">
+      <h1 class="paper-title">KAVA</h1>
+      <div class="title-rule"></div>
+      <p class="subtitle">Full Paper Title Goes Here</p>
+      <div class="anonymous">Anonymous Project Page</div>
+
+      <div class="top-buttons">
+        <a class="button primary" href="#">Paper</a>
+        <span class="button disabled">Code — Coming Soon</span>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =========================================================
+       NAVIGATION
+  ========================================================== -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#motivation">Motivation</a>
+      <a href="#kalman">Kalman Filter</a>
+      <a href="#kava">How KAVA Works</a>
+      <a href="#real-world">Real-World</a>
+      <a href="#simulation">Simulation</a>
+    </div>
+  </nav>
+
+
+  <main>
+
+    <!-- =======================================================
+         1. MOTIVATION
+    ======================================================== -->
+    <section id="motivation">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">Why KAVA?</div>
+          <h2>Motivation</h2>
+          <div class="section-rule"></div>
+        </div>
+
+        <p class="lead placeholder">
+          [Why repeated full VLA inference is expensive, why short-term temporal
+          regularity creates an opportunity to skip calls, and why deciding
+          when prediction remains reliable is the key challenge.]
+        </p>
+
+        <div class="figure">
+          <div class="figure-placeholder">
+            Motivation figure / trajectory illustration
+          </div>
+          <div class="caption placeholder">
+            [Figure caption]
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================
+         2. KALMAN FILTER
+    ======================================================== -->
+    <section id="kalman">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">Core Idea</div>
+          <h2>What is a Kalman Filter?</h2>
+          <div class="section-rule"></div>
+        </div>
+
+        <p class="lead placeholder">
+          [A concise, intuitive explanation: the state carries the action
+          estimate, while covariance carries uncertainty. This gives KAVA
+          both a prediction and a confidence signal from the same belief.]
+        </p>
+
+        <div class="figure">
+          <div class="figure-placeholder">
+            Kalman illustration<br>
+            Prediction &nbsp;→&nbsp; Uncertainty &nbsp;→&nbsp; VLA Measurement / Correction
+          </div>
+          <div class="caption placeholder">
+            [Explain why covariance grows during skipped steps and contracts
+            after a genuine VLA measurement.]
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Predict</h4>
+            <p class="placeholder">
+              [Extrapolate the next action from the current Kalman belief.]
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Track Uncertainty</h4>
+            <p class="placeholder">
+              [Covariance increases as KAVA predicts without a new VLA observation.]
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Correct</h4>
+            <p class="placeholder">
+              [When KAVA queries the VLA, the new action corrects the belief.]
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================
+         3. KAVA
+    ======================================================== -->
+    <section id="kava">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">Method</div>
+          <h2>KAVA: How Does It Work?</h2>
+          <div class="section-rule"></div>
+        </div>
+
+        <p class="lead placeholder">
+          [One-paragraph overview of the shared Kalman belief,
+          phase-conditioned uncertainty, and adaptive skip horizon.]
+        </p>
+
+        <div class="figure">
+          <div class="figure-placeholder">
+            Main KAVA pipeline figure
+          </div>
+          <div class="caption placeholder">
+            [KAVA framework caption]
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Action Prediction</h4>
+            <p class="placeholder">
+              [A Kalman predictor extrapolates recent VLA actions.]
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Reliability Readout</h4>
+            <p class="placeholder">
+              [The scheduler reads the predictor's own covariance.]
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Adaptive Scheduling</h4>
+            <p class="placeholder">
+              [KAVA chooses the largest safe skip horizon under the adaptive threshold.]
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================
+         4. REAL-WORLD RESULTS
+    ======================================================== -->
+    <section id="real-world">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">Experiments</div>
+          <h2>Real-World Results</h2>
+          <div class="section-rule"></div>
+        </div>
+
+        <p class="lead placeholder">
+          [Brief description of the Franka real-robot evaluation.]
+        </p>
+
+
+        <!-- pi0 -->
+        <div class="result-block">
+          <div class="result-title">
+            <h3>&pi;<sub>0</sub></h3>
+            <span class="tag">Franka Robot</span>
+          </div>
+
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-placeholder">
+                Demo Video — &pi;<sub>0</sub> Task 1
+              </div>
+              <div class="video-label">Task 1</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-placeholder">
+                Demo Video — &pi;<sub>0</sub> Task 2
+              </div>
+              <div class="video-label">Task 2</div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Success Rate</th>
+                  <th>Frequency (Hz) ↑</th>
+                  <th>FLOPs (T) ↓</th>
+                  <th>CUDA Latency (ms) ↓</th>
+                  <th>Skip Ratio ↑</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&pi;<sub>0</sub></td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>0%</td>
+                </tr>
+                <tr class="ours">
+                  <td>&pi;<sub>0</sub> + KAVA</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <!-- pi0.5 -->
+        <div class="result-block">
+          <div class="result-title">
+            <h3>&pi;<sub>0.5</sub></h3>
+            <span class="tag">Franka Robot</span>
+          </div>
+
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-placeholder">
+                Demo Video — &pi;<sub>0.5</sub> Task 1
+              </div>
+              <div class="video-label">Task 1</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-placeholder">
+                Demo Video — &pi;<sub>0.5</sub> Task 2
+              </div>
+              <div class="video-label">Task 2</div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Success Rate</th>
+                  <th>Frequency (Hz) ↑</th>
+                  <th>FLOPs (T) ↓</th>
+                  <th>CUDA Latency (ms) ↓</th>
+                  <th>Skip Ratio ↑</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&pi;<sub>0.5</sub></td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>0%</td>
+                </tr>
+                <tr class="ours">
+                  <td>&pi;<sub>0.5</sub> + KAVA</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="findings">
+          <h4>Key Findings</h4>
+          <ul>
+            <li class="placeholder">[Finding 1: real control-frequency improvement]</li>
+            <li class="placeholder">[Finding 2: reduced FLOPs and CUDA latency]</li>
+            <li class="placeholder">[Finding 3: task success remains close to baseline]</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =======================================================
+         5. SIMULATION RESULTS
+    ======================================================== -->
+    <section id="simulation">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">Experiments</div>
+          <h2>Simulation Results</h2>
+          <div class="section-rule"></div>
+        </div>
+
+
+        <!-- LIBERO -->
+        <div class="result-block">
+          <div class="result-title">
+            <h3>LIBERO</h3>
+            <span class="tag">OpenVLA / OpenVLA-OFT</span>
+          </div>
+
+          <p class="placeholder">
+            [Short description of the LIBERO evaluation.]
+          </p>
+
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-placeholder">LIBERO-Spatial Demo</div>
+              <div class="video-label">Spatial</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-placeholder">LIBERO-Object Demo</div>
+              <div class="video-label">Object</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-placeholder">LIBERO-Goal Demo</div>
+              <div class="video-label">Goal</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-placeholder">LIBERO-Long Demo</div>
+              <div class="video-label">Long</div>
+            </div>
+          </div>
+
+          <div class="figure">
+            <div class="figure-placeholder">
+              LIBERO quantitative results / figure
+            </div>
+          </div>
+        </div>
+
+
+        <!-- SIMPLER -->
+        <div class="result-block">
+          <div class="result-title">
+            <h3>SIMPLER</h3>
+            <span class="tag">CogACT</span>
+          </div>
+
+          <p class="placeholder">
+            [Short description of the SIMPLER evaluation.]
+          </p>
+
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-placeholder">SIMPLER Demo — Task 1</div>
+              <div class="video-label">Task 1</div>
+            </div>
+
+            <div class="video-card">
+              <div class="video-placeholder">SIMPLER Demo — Task 2</div>
+              <div class="video-label">Task 2</div>
+            </div>
+          </div>
+
+          <div class="figure">
+            <div class="figure-placeholder">
+              SIMPLER quantitative results / figure
+            </div>
+          </div>
+        </div>
+
+
+        <div class="findings">
+          <h4>Key Findings</h4>
+          <ul>
+            <li class="placeholder">[Finding 1]</li>
+            <li class="placeholder">[Finding 2]</li>
+            <li class="placeholder">[Finding 3]</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    Anonymous Project Page
+  </footer>
+
+</body>
+</html>
