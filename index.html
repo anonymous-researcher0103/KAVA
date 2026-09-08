@@ -836,6 +836,220 @@
       }
     }
 
+  
+    /* =========================================================
+       INTERACTIVE MICRO-INTERACTIONS
+       Subtle hover/focus effects for a polished research page.
+    ========================================================= */
+
+    /* Global easing */
+    .button,
+    .nav-inner a,
+    .step,
+    .video-card,
+    .figure,
+    .findings,
+    .table-wrap,
+    tbody tr {
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        opacity 180ms ease;
+    }
+
+    /* Header buttons */
+    .button:not(.disabled):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(75, 117, 164, 0.16);
+    }
+
+    .button.primary:hover {
+      background: #5f87b7;
+      border-color: #5f87b7;
+    }
+
+    /* Navigation underline animation */
+    .nav-inner a {
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-inner a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--blue);
+      transform: translateX(-50%);
+      transition: width 180ms ease;
+    }
+
+    .nav-inner a:hover {
+      color: var(--blue);
+    }
+
+    .nav-inner a:hover::after {
+      width: 100%;
+    }
+
+    /* Kalman / KAVA step panels */
+    .step:hover {
+      z-index: 1;
+      background: var(--blue-pale);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(72, 111, 153, 0.10);
+    }
+
+    .step:hover .step-number {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+      transition: 180ms ease;
+    }
+
+    .step:hover h4 {
+      color: var(--blue);
+    }
+
+    /* Figures */
+    .figure {
+      position: relative;
+    }
+
+    .figure:hover {
+      transform: translateY(-2px);
+    }
+
+    .figure:hover .figure-placeholder,
+    .figure:hover img {
+      border-color: var(--blue-mid);
+      box-shadow: 0 8px 22px rgba(72, 111, 153, 0.09);
+    }
+
+    .figure-placeholder,
+    .figure img {
+      transition:
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+    }
+
+    /* Video cards */
+    .video-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue-mid);
+      box-shadow: 0 10px 24px rgba(72, 111, 153, 0.12);
+    }
+
+    .video-card:hover .video-label {
+      color: var(--blue);
+      background: var(--blue-pale);
+    }
+
+    .video-label {
+      transition:
+        color 180ms ease,
+        background-color 180ms ease;
+    }
+
+    .video-placeholder {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-placeholder::after {
+      content: "▶";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(111, 149, 195, 0.55);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.88);
+      color: var(--blue);
+      font-size: 17px;
+      opacity: 0;
+      transform: translate(-50%, -45%) scale(0.94);
+      transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+      pointer-events: none;
+    }
+
+    .video-card:hover .video-placeholder::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Table interaction */
+    tbody tr:hover {
+      background: var(--blue-pale);
+    }
+
+    tbody tr.ours:hover {
+      background: var(--blue-light);
+    }
+
+    /* Findings box */
+    .findings:hover {
+      transform: translateX(3px);
+      border-left-color: #4d78aa;
+      background: #f2f7fc;
+    }
+
+    /* Section heading accent */
+    .section-rule {
+      transition: width 220ms ease, background-color 220ms ease;
+    }
+
+    section:hover .section-rule {
+      width: 68px;
+      background: var(--blue);
+    }
+
+    /* Accessible keyboard focus */
+    .button:focus-visible,
+    .nav-inner a:focus-visible {
+      outline: 2px solid var(--blue-mid);
+      outline-offset: 4px;
+    }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    /* On touch devices, avoid "sticky" hover behavior */
+    @media (hover: none) {
+      .step:hover,
+      .video-card:hover,
+      .figure:hover,
+      .findings:hover,
+      .button:not(.disabled):hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .video-placeholder::after {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
